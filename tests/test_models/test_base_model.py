@@ -25,21 +25,26 @@ class TestInit(unittest.TestCase):
         b1 = BaseModel()
         self.assertEqual(b1.created_at, b1.updated_at)
 
+
+class TestStr(unittest.TestCase):
     def test_str_string(self):
         """Test __str__ method"""
         b1 = BaseModel()
         self.assertAlmostEqual(type(str(b1)), str)
 
+class TestSave(unittest.TestCase):
     def test_save(self):
         """Test save method"""
         b1 = BaseModel()
         b1.save()
         self.assertNotEqual(b1.created_at, b1.updated_at)
 
+class TestToDict(unittest.TestCase):
     def test_to_dict(self):
         """Test to dict method"""
         b1 = BaseModel()
         dic = b1.to_dict()
         for key in dic.keys():
             self.assertAlmostEqual(type(dic[key]), str)
+
 
