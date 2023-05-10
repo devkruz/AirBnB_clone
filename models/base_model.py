@@ -3,7 +3,7 @@
 import uuid
 from datetime import datetime
 
-class BaseModle():
+class BaseModel():
     """Base model"""
     def __init__(self):
         """Initialize BaseModel"""
@@ -16,9 +16,18 @@ class BaseModle():
         return "[{}] ({}) <{}>"\
                 .format(type(self).__name__, self.id, self.__dict__)
 
+    def save(self):
+        """Update updated_at to current time"""
+        self.created_at = datetime.now()
 
-b1 = BaseModle()
-b2 = BaseModle()
+    def to_dict(self):
+        """
+        Returns a dictionary representation
+        of instance
+        """
+        dic = self.__dict__
+        dic["__class__"] = type(self).__name__
+        dic["created_at"] = dic["created_at"].isoformat()
+        dic["updated_at"] = dic["updated_at"].isoformat()
 
-print(b1)
-print(b2)
+        return dic
