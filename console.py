@@ -12,6 +12,10 @@ class HBNBCommand(cmd.Cmd):
         """Exit the programe"""
         return True
 
+    def emptyline(self):
+        """Do not execute previous command for empty input"""
+        pass
+
     def do_quit(self, args):
         """Quit the programe"""
         exit(1)
