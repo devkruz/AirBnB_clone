@@ -84,7 +84,7 @@ class HBNBCommand(cmd.Cmd):
                 storage.reload()
                 print(storage.all())
             else:
-                 print("** no instance found **")
+                print("** no instance found **")
 
     def do_all(self, args):
         """
@@ -101,8 +101,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             print([str(obj) for obj in all_instances
-                    if obj.__class__ == class_name])
-
+                   if class_name == obj.__class__.__name__])
 
 
 if __name__ == '__main__':
