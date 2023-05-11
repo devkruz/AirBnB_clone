@@ -2,6 +2,7 @@
 import unittest
 from models.base_model import BaseModel
 
+
 class TestInit(unittest.TestCase):
     """Test init method"""
     def test_uuid_type(self):
@@ -32,12 +33,14 @@ class TestStr(unittest.TestCase):
         b1 = BaseModel()
         self.assertAlmostEqual(type(str(b1)), str)
 
+
 class TestSave(unittest.TestCase):
     def test_save(self):
         """Test save method"""
         b1 = BaseModel()
         b1.save()
         self.assertNotEqual(b1.created_at, b1.updated_at)
+
 
 class TestToDict(unittest.TestCase):
     def test_to_dict(self):
@@ -46,5 +49,3 @@ class TestToDict(unittest.TestCase):
         dic = b1.to_dict()
         for key in dic.keys():
             self.assertAlmostEqual(type(dic[key]), str)
-
-

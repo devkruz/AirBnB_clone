@@ -5,6 +5,7 @@ from json import dump, load
 import os
 from models.base_model import BaseModel
 
+
 class FileStorage():
     """File storage"""
     __file_path = "airbnb.json"
@@ -16,7 +17,8 @@ class FileStorage():
 
     def new(self, obj):
         """Sets new object"""
-        self.__class__.__objects["{}.{}".format(type(obj).__name__, obj.id)] = obj
+        this_class = self.__class__
+        this_class.__objects["{}.{}".format(type(obj).__name__, obj.id)] = obj
 
     def save(self):
         """

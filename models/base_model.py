@@ -45,4 +45,3 @@ class BaseModel():
         dic["updated_at"] = dic["updated_at"].isoformat()
 
         return dic
-
