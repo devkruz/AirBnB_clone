@@ -1,6 +1,9 @@
-"""File storage"""
+#!/usr/bin/python3
+"""File storage model"""
+
 from json import dump, load
 import os
+from models.base_model import BaseModel
 
 class FileStorage():
     """File storage"""
@@ -26,7 +29,7 @@ class FileStorage():
         for key, value in py_obj.items():
             py_dic[key] = value.to_dict()
 
-        with open(file_path, "a") as file:
+        with open(file_path, mode="w") as file:
             dump(py_dic, file)
 
     def reload(self):
@@ -41,7 +44,4 @@ class FileStorage():
             with open(file_path) as file:
                 py_obj = load(file)
                 for obj in py_obj.values():
-                    self.__class__()
-            self.__class__.__objects = py_obj
-
-
+                    self.new(eval(obj["__class__"])(**obj))
