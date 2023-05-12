@@ -9,7 +9,7 @@ class HBNBCommand(cmd.Cmd):
     """Airbnb Console Commands"""
     prompt = "(hbnb) "
     intro = "Welcome to Airbnb Console Commands"
-    avaliable_class = ["BaseModel"]
+    avaliable_class = ["BaseModel", "User"]
 
     def do_EOF(self, args):
         """Exit the programe"""
@@ -24,7 +24,10 @@ class HBNBCommand(cmd.Cmd):
         exit(1)
 
     def do_create(self, args):
-        """Creates a new instance"""
+        """
+        Creates a new instance
+        Usage: create <class name>
+        """
         if args == "":
             print("** class name missing **")
             return
@@ -39,6 +42,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints the string representation
         of an instance
+        Usage: show <class name> <id>
         """
         if args == "":
             print("** class name missing **")
@@ -61,7 +65,10 @@ class HBNBCommand(cmd.Cmd):
             print("* no instance found **")
 
     def do_destroy(self, args):
-        """Deletes an instance"""
+        """
+        Deletes an instance
+        Usage: destroy <class name> <id>
+        """
         if args == "":
             print("** class name missing **")
             return
@@ -90,6 +97,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Prints all string representation
         of all instances or the specified one only
+        Usage: all <class name> | all
         """
         all_instances = storage.all().values()
         if args == "":
