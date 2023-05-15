@@ -62,7 +62,7 @@ class HBNBCommand(cmd.Cmd):
                 if id == obj.id:
                     print(obj)
                     return
-            print("* no instance found **")
+            print("** no instance found **")
 
     def do_destroy(self, args):
         """
