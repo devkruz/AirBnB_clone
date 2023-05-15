@@ -4,12 +4,18 @@ import cmd
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+
 
 class HBNBCommand(cmd.Cmd):
     """Airbnb Console Commands"""
     prompt = "(hbnb) "
     intro = "Welcome to Airbnb Console Commands"
-    avaliable_class = ["BaseModel", "User"]
+    avaliable_class = ["BaseModel", "User", "Amenity", "City", "Place", "Review", "State"]
 
     def do_EOF(self, args):
         """Exit the programe"""
@@ -89,7 +95,6 @@ class HBNBCommand(cmd.Cmd):
                 del all_models[key_id]
                 storage.save()
                 storage.reload()
-                print(storage.all())
             else:
                 print("** no instance found **")
 
@@ -111,7 +116,6 @@ class HBNBCommand(cmd.Cmd):
             print([str(obj) for obj in all_instances
                    if class_name == obj.__class__.__name__])
 
-# update <class name> <id> <attribute name> "<attribute value>"
     def do_update(self, args):
         """
         Updates an instance based on the class name and id
