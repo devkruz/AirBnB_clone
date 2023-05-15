@@ -21,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, args):
         """Quit the programe"""
-        exit(1)
+        return True
 
     def do_create(self, args):
         """
