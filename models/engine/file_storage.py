@@ -37,7 +37,7 @@ class FileStorage():
         for key, value in py_obj.items():
             py_dic[key] = value.to_dict()
 
-        with open(file_path, mode="w") as file:
+        with open(file_path, mode="w", encoding="utf-8") as file:
             dump(py_dic, file)
 
     def reload(self):
@@ -48,8 +48,11 @@ class FileStorage():
         (__file_path) exists
         """
         file_path = self.__class__.__file_path
-        if os.path.exists(file_path):
-            with open(file_path) as file:
-                py_obj = load(file)
-                for obj in py_obj.values():
-                    self.new(eval(obj["__class__"])(**obj))
+        try:
+            if os.path.exists(file_path):
+                with open(file_path, encoding="utf-8") as file:
+                    py_obj = load(file)
+                    for obj in py_obj.values():
+                        self.new(eval(obj["__class__"])(**obj))
+        except FileNotFoundError:
+            pass
