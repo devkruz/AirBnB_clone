@@ -1,0 +1,13 @@
+
+footer {
+    background-color: green;
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+footer p {
+    width: fit-content;
+    margin: 20px auto;
+}
