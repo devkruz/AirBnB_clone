@@ -1,7 +1,7 @@
 
 footer {
     background-color: green;
-    position: fixed;
+    position: relative;
     height: 60px;
     width: 100%;
     left: 0;
